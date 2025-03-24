@@ -1,14 +1,14 @@
 import admin from "firebase-admin";
+import dotenv from "dotenv";
+import { createRequire } from "module";
 
-import dotenv from 'dotenv';
 dotenv.config();
 
-import serviceAccount from '../disaster-relief-37cdd-firebase-adminsdk-fbsvc-4a10562e4a.json' assert { type: 'json' };
-
+const require = createRequire(import.meta.url);
+const serviceAccount = require("../disaster-relief-37cdd-firebase-adminsdk-fbsvc-4a10562e4a.json");
 
 admin.initializeApp({
-  credential: admin.credential.cert(serviceAccount)
+  credential: admin.credential.cert(serviceAccount),
 });
 
-export default admin; 
- 
+export default admin;
